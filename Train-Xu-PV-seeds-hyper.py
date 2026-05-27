@@ -359,7 +359,7 @@ for idxConfig, config in enumerate(experiment_configs):
                                         general_dataset_type,
                                         dataset_type,
                                         list_species_input,
-                                        list_species_output,
+                                        list_species_output_evaluation,
                                         input_scaling_name,
                                         input_species_scaling,
                                         input_species_bias,
