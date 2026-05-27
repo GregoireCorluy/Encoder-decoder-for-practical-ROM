@@ -29,7 +29,7 @@ import torch.nn as nn
 # General information
 path_data = 'data-files/'
 general_dataset_type = "Xu"
-dataset_type = "autoignition"
+dataset_type = "low2"
 device = torch.device("cuda:2" if torch.cuda.is_available() else "cpu")
 logging.info(f"My device: {device}")
 current_time = datetime.now()
@@ -39,7 +39,7 @@ loss_name = "mse" #"MSE"
 lambda_reg = 1
 learning_rate_decay = "Cosine"
 cosine_alpha = 0.01
-max_epo = 10
+max_epo = 100000
 cosine_decay_steps = 100000
 optimizer_alpha = 0.9
 optimizer_momentum = 0.3
@@ -125,7 +125,7 @@ for idxConfig, config in enumerate(experiment_configs):
     species_tag = config["species_tag"]
     my_seed = config["seed"]
 
-    training_nbr = f"SLF_{optimizer_name}_{int(lr*10000)}_{species_tag}"
+    training_nbr = f"35aTestlow2newLib_{optimizer_name}_{int(lr*10000)}_{species_tag}"
     training_id = f"Tr{training_nbr}_s{my_seed}"
     list_ids.append(training_id)
     print(training_id)
