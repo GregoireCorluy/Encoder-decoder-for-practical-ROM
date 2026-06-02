@@ -39,7 +39,7 @@ loss_name = "mse" #"MSE"
 lambda_reg = 1
 learning_rate_decay = "Cosine"
 cosine_alpha = 0.01
-max_epo = 100000
+max_epo = 10
 cosine_decay_steps = 100000
 optimizer_alpha = 0.9
 optimizer_momentum = 0.3
@@ -64,7 +64,7 @@ temperature_output = True
 output_scaling = "-1to1"
 
 # Encoder-decoder architecture
-auto_species_scaling = True
+species_scaling_layer = True
 init_species_scaling_range = (1.0, 2.0)
 init_name_enc = "Normal"
 init_name_dec = "Normal"
@@ -76,7 +76,7 @@ activation_function_output = "tanh"
 
 # Extra
 header_data = 'infer'
-bool_compute_Kreg = True
+bool_compute_Kreg = False
 nbr_seeds = 1
 
 ####################################
@@ -170,7 +170,7 @@ for idxConfig, config in enumerate(experiment_configs):
                         "decoder_layers", "elapsed_time",
                         "learning_rate_decay", "cosine_alpha", "cosine_decay_steps", "optimizer_alpha", "optimizer_momentum",
                         "extra_manifold_parameters", "range_extra_manifold_parameters", "scale_PV", "model_params",
-                        "input_scaling_name", "auto_species_scaling", "init_species_scaling_range", "input_species_scaling", "input_species_bias",
+                        "input_scaling_name", "species_scaling_layer", "init_species_scaling_range", "input_species_scaling", "input_species_bias",
                         "activation_function", "activation_function_output",
                         "best_training_loss", "best_validation_loss", "avg_std_MSE_Kreg"]
 
@@ -216,9 +216,10 @@ for idxConfig, config in enumerate(experiment_configs):
                     "PV_dim": PV_dim,
                     "output_dim": output_dim,
                     "decoder_layers": decoder_layers,
-                    "auto_scaling": auto_species_scaling,
+                    "species_scaling_layer": species_scaling_layer,
                     "activation_function": activation_function,
-                    "activation_function_output": activation_function_output}
+                    "activation_function_output": activation_function_output,
+                    "extra_manifold_parameters": extra_manifold_parameters}
     model = PV_autoencoder(**model_params)
     model.to(device)
 
@@ -384,7 +385,7 @@ for idxConfig, config in enumerate(experiment_configs):
                      "decoder_layers": decoder_layers, "elapsed_time": elapsed_time,
                      "learning_rate_decay": learning_rate_decay, "cosine_alpha": cosine_alpha, "cosine_decay_steps": cosine_decay_steps, "optimizer_alpha": optimizer_alpha, "optimizer_momentum": optimizer_momentum,
                      "extra_manifold_parameters": extra_manifold_parameters, "range_extra_manifold_parameters": range_extra_manifold_parameters, "scale_PV": scale_PV, "model_params": model_params,
-                     "input_scaling_name": input_scaling_name, "auto_species_scaling": auto_species_scaling, "init_species_scaling_range": init_species_scaling_range, "input_species_scaling": input_species_scaling, "input_species_bias": input_species_bias,
+                     "input_scaling_name": input_scaling_name, "species_scaling_layer": species_scaling_layer, "init_species_scaling_range": init_species_scaling_range, "input_species_scaling": input_species_scaling, "input_species_bias": input_species_bias,
                      "activation_function": activation_function, "activation_function_output": activation_function_output,
                      "best_training_loss": best_training_loss, "best_validation_loss": best_validation_loss, "avg_std_MSE_Kreg":avg_std_MSE_Kreg}
 
