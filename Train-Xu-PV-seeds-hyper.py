@@ -29,7 +29,7 @@ import torch.nn as nn
 # General information
 path_data = 'data-files/'
 general_dataset_type = "Xu"
-dataset_type = "low2"
+dataset_type = "autoignition-augm2"
 device = torch.device("cuda:2" if torch.cuda.is_available() else "cpu")
 logging.info(f"My device: {device}")
 current_time = datetime.now()
@@ -39,7 +39,7 @@ loss_name = "mse" #"MSE"
 lambda_reg = 1
 learning_rate_decay = "Cosine"
 cosine_alpha = 0.01
-max_epo = 10
+max_epo = 100000
 cosine_decay_steps = 100000
 optimizer_alpha = 0.9
 optimizer_momentum = 0.3
@@ -86,11 +86,11 @@ nbr_seeds = 1
 file_species_names = "Xu-state-space-names.csv" #f"Xu-state-space-names-{dataset_type}.csv"
 
 learning_rates = [0.025]
-optimizers = ["RMSprop"]
+optimizers = ["adam"]
 lists_species_output_QoI = [
-    ("noLog", ['H2O2', 'H2O', 'H2', 'HO2', 'N2O', 'NO2', 'NO', 'O2', 'OH']),
+    #("noLog", ['H2O2', 'H2O', 'H2', 'HO2', 'N2O', 'NO2', 'NO', 'O2', 'OH']),
     #("log10", ['logH2O2-10', 'logH2O-10', 'logH2-10', 'logHO2-10', 'logN2O-10', 'logNO2-10', 'logNO-10', 'logO2-10', 'logOH-10']),
-    #("log20", ['logH2O2-20', 'logH2O-20', 'logH2-20', 'logHO2-20', 'logN2O-20', 'logNO2-20', 'logNO-20', 'logO2-20', 'logOH-20'])
+    ("log20", ['logH2O2-20', 'logH2O-20', 'logH2-20', 'logHO2-20', 'logN2O-20', 'logNO2-20', 'logNO-20', 'logO2-20', 'logOH-20'])
 ]
 seeds = list(range(nbr_seeds))
 
@@ -125,7 +125,7 @@ for idxConfig, config in enumerate(experiment_configs):
     species_tag = config["species_tag"]
     my_seed = config["seed"]
 
-    training_nbr = f"35aTestlow2newLib_{optimizer_name}_{int(lr*10000)}_{species_tag}"
+    training_nbr = f"35aTestAutoignitionNewLib_{optimizer_name}_{int(lr*10000)}_{species_tag}"
     training_id = f"Tr{training_nbr}_s{my_seed}"
     list_ids.append(training_id)
     print(training_id)
