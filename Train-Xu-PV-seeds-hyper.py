@@ -83,7 +83,7 @@ nbr_seeds = 1
 #Set name of file with species names
 ####################################
 
-file_species_names = "Xu-state-space-names.csv" #f"Xu-state-space-names-{dataset_type}.csv"
+file_species_names = f"Xu-state-space-names-{dataset_type}.csv" #f"Xu-state-space-names-{dataset_type}.csv" #"Xu-state-space-names.csv"
 
 learning_rates = [0.025]
 optimizers = ["adam"]
