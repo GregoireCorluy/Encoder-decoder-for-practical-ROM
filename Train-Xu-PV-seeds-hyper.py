@@ -28,8 +28,8 @@ import torch.nn as nn
 
 # General information
 path_data = 'data-files/'
-general_dataset_type = "Xu"
-dataset_type = "autoignition_augm2"
+general_dataset_type = "Malik"
+dataset_type = "CFLF-2022"
 device = torch.device("cuda:2" if torch.cuda.is_available() else "cpu")
 logging.info(f"My device: {device}")
 current_time = datetime.now()
@@ -57,10 +57,10 @@ range_extra_manifold_parameters = 1 #from -x/2 to x/2
 
 # Input/output data
 perc_val = 0.1 #0.2 #percentage of validation data
-list_species_input = ['H2NN', 'H2O2', 'H2O', 'H2', 'HNO', 'HO2', 'HONO2', 'HONO', 'H', 'N2O', 'NH2', 'NH', 'NNH', 'NO2', 'NO', 'N', 'O2', 'OH', 'O']
-list_species_output_evaluation = ['H2O2', 'H2O', 'H2', 'HO2', 'N2O', 'NO2', 'NO', 'O2', 'OH']
+list_species_input = ['H2', 'H', 'O', 'O2', 'OH', 'H2O', 'HO2', 'H2O2', 'C', 'CH', 'CH2', 'CH2S', 'CH3', 'CH4', 'CO', 'CO2', 'HCO', 'CH2O', 'CH2OH', 'CH3O', 'CH3OH', 'C2H', 'C2H2', 'C2H3', 'C2H4', 'C2H5', 'C2H6', 'HCCO', 'CH2CO', 'HCCOH', 'C3H7', 'C3H8', 'CH2CHO', 'CH3CHO', 'N2']
+list_species_output_evaluation = ["CH4", "CO", "O2", "CO2", "H2O", "N2"]
 input_scaling_name = "None"
-temperature_output = True
+temperature_output = False
 output_scaling = "-1to1"
 
 # Encoder-decoder architecture
@@ -76,21 +76,22 @@ activation_function_output = "tanh"
 
 # Extra
 header_data = 'infer'
-bool_compute_Kreg = False
-nbr_seeds = 1
+bool_compute_Kreg = True
+nbr_seeds = 6
 
 ####################################
 #Set name of file with species names
 ####################################
 
-file_species_names = f"Xu-state-space-names-{dataset_type}.csv" #f"Xu-state-space-names-{dataset_type}.csv" #"Xu-state-space-names.csv"
+file_species_names = f"{general_dataset_type}-state-space-names-{dataset_type}.csv" #f"Xu-state-space-names-{dataset_type}.csv" #"Xu-state-space-names.csv"
 
 learning_rates = [0.025]
-optimizers = ["adam"]
+optimizers = ["RMSprop"]
 lists_species_output_QoI = [
+    ("major", ["CH4", "CO", "O2", "CO2", "H2O", "N2"])
     #("noLog", ['H2O2', 'H2O', 'H2', 'HO2', 'N2O', 'NO2', 'NO', 'O2', 'OH']),
     #("log10", ['logH2O2-10', 'logH2O-10', 'logH2-10', 'logHO2-10', 'logN2O-10', 'logNO2-10', 'logNO-10', 'logO2-10', 'logOH-10']),
-    ("log20", ['logH2O2-20', 'logH2O-20', 'logH2-20', 'logHO2-20', 'logN2O-20', 'logNO2-20', 'logNO-20', 'logO2-20', 'logOH-20'])
+    #("log20", ['logH2O2-20', 'logH2O-20', 'logH2-20', 'logHO2-20', 'logN2O-20', 'logNO2-20', 'logNO-20', 'logO2-20', 'logOH-20'])
 ]
 seeds = list(range(nbr_seeds))
 
@@ -125,7 +126,7 @@ for idxConfig, config in enumerate(experiment_configs):
     species_tag = config["species_tag"]
     my_seed = config["seed"]
 
-    training_nbr = f"35aTestAutoignitionNewLib_{optimizer_name}_{int(lr*10000)}_{species_tag}"
+    training_nbr = f"1aFirstTry_{optimizer_name}_{int(lr*10000)}_{species_tag}"
     training_id = f"Tr{training_nbr}_s{my_seed}"
     list_ids.append(training_id)
     print(training_id)
