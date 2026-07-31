@@ -59,7 +59,7 @@ range_extra_manifold_parameters = 1 #from -x/2 to x/2
 perc_val = 0.1 #0.2 #percentage of validation data
 list_species_input = ['H2', 'H', 'O', 'O2', 'OH', 'H2O', 'HO2', 'H2O2', 'C', 'CH', 'CH2', 'CH2S', 'CH3', 'CH4', 'CO', 'CO2', 'HCO', 'CH2O', 'CH2OH', 'CH3O', 'CH3OH', 'C2H', 'C2H2', 'C2H3', 'C2H4', 'C2H5', 'C2H6', 'HCCO', 'CH2CO', 'HCCOH', 'C3H7', 'C3H8', 'CH2CHO', 'CH3CHO', 'N2']
 list_species_output_evaluation = ["CH4", "CO", "O2", "CO2", "H2O", "N2"]
-input_scaling_name = "pareto" #"None"
+input_scaling_name = "0to1" #"None"
 temperature_output = True
 output_scaling = "-1to1"
 
@@ -126,7 +126,7 @@ for idxConfig, config in enumerate(experiment_configs):
     species_tag = config["species_tag"]
     my_seed = config["seed"]
 
-    training_nbr = f"1c2PVpareto_{optimizer_name}_{int(lr*10000)}_{species_tag}"
+    training_nbr = f"1d2PV0to1_{optimizer_name}_{int(lr*10000)}_{species_tag}"
     training_id = f"Tr{training_nbr}_s{my_seed}"
     list_ids.append(training_id)
     print(training_id)
