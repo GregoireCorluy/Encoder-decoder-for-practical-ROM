@@ -126,7 +126,7 @@ for idxConfig, config in enumerate(experiment_configs):
     species_tag = config["species_tag"]
     my_seed = config["seed"]
 
-    training_nbr = f"1TESTc2PVpareto_{optimizer_name}_{int(lr*10000)}_{species_tag}"
+    training_nbr = f"1c2PVpareto_{optimizer_name}_{int(lr*10000)}_{species_tag}"
     training_id = f"Tr{training_nbr}_s{my_seed}"
     list_ids.append(training_id)
     print(training_id)
