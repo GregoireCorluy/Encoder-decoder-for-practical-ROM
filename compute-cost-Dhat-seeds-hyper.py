@@ -96,19 +96,19 @@ for idxConfig, config in enumerate(experiment_configs):
                                                     depVars,
                                                     depvar_names=depvar_names,
                                                     bandwidth_values=bandwidth_values)
-    np.save(f"costs/variance_{id}-bw_{start_bw}_{end_bw}_{nbr_points_bw}-dataset_{dataset_type}.npy", variance_data)
+    np.save(f"data-files/costs/variance_{id}-bw_{start_bw}_{end_bw}_{nbr_points_bw}-dataset_{dataset_type}.npy", variance_data)
 
     costs = cost_function_normalized_variance_derivative(variance_data,
                                                         penalty_function=penalty_function,
                                                         power=power,
                                                         vertical_shift=vertical_shift,
                                                         norm=None)
-    np.save(f"costs/costs_{id}-bw_{start_bw}_{end_bw}_{nbr_points_bw}-p_{power}-ver_sh_{vertical_shift}-dataset_{dataset_type}.npy", costs)
+    np.save(f"data-files/costs/costs_{id}-bw_{start_bw}_{end_bw}_{nbr_points_bw}-p_{power}-ver_sh_{vertical_shift}-dataset_{dataset_type}.npy", costs)
 
     (derivative, bandwidth_values, max_derivative) = normalized_variance_derivative(variance_data)
 
     plt = plot_normalized_variance_derivative(variance_data)
-    plt.savefig(f"costs/plot_Dhat_{id}-bw_{start_bw}_{end_bw}_{nbr_points_bw}-p_{power}-ver_sh_{vertical_shift}-dataset_{dataset_type}.png")
+    plt.savefig(f"data-files/costs/plot_Dhat_{id}-bw_{start_bw}_{end_bw}_{nbr_points_bw}-p_{power}-ver_sh_{vertical_shift}-dataset_{dataset_type}.png")
 
     list_avg_cost.append(compute_avg(np.array(costs)))
     print(f"{filename} done.")
