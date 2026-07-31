@@ -79,7 +79,7 @@ for idxConfig, config in enumerate(experiment_configs):
     loader = loadData(filename)
     depvar_names = loader.getListQoIs()
     model = loader.loadModel(device = device)
-    id = loader.metadata["Training_id"]
+    id = loader.metadata["training_id"]
 
     #get the input (PV and f) and the output (interested Yi, T and source terms) data
     PV_f, output = loader.getInputOutputAnalysis(path_data, dataset_type) #for PV_f reshape to be (5200,1) instead of (52000)
