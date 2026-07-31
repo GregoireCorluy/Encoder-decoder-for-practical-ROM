@@ -58,7 +58,7 @@ PCA_param = pca_state_space.transform(state_space_numpy)
 depvar_names = species + ["T", "PC1", "PC2"]
 
 output = data_state_space[species]
-output = pd.concat([output, data_T], axis=0, ignore_index=True).to_numpy()
+output = pd.concat([output, data_T], axis=1, ignore_index=True).to_numpy()
 
 dataSourceMajor = data_state_space_source[species].to_numpy()
 PCsource = pca_state_space.transform(dataSourceMajor)
