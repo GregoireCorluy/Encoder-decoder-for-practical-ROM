@@ -85,12 +85,12 @@ for idxConfig, config in enumerate(experiment_configs):
     PV_f, output = loader.getInputOutputAnalysis(path_data, dataset_type) #for PV_f reshape to be (5200,1) instead of (52000)
 
     #scale every column of the PV_f tensor between 0 and 1
-    min_vals = PV_f.min(dim=0, keepdim=True).values
-    max_vals = PV_f.max(dim=0, keepdim=True).values
+    min_vals = np.min(PV_f, axis=0, keepdims=True)
+    max_vals = np.max(PV_f, axis=0, keepdims=True)
     PV_f_scaled = (PV_f - min_vals) / (max_vals - min_vals)
 
-    indepVars = PV_f_scaled.detach().numpy()
-    depVars = output.detach().numpy()
+    indepVars = PV_f_scaled
+    depVars = output
 
     variance_data = compute_normalized_variance(indepVars,
                                                     depVars,
