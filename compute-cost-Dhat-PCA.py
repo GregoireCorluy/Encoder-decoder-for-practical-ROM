@@ -54,7 +54,6 @@ pca_state_space = PCA(
 
 PCA_param = pca_state_space.transform(state_space_numpy)
 
-
 depvar_names = species + ["T", "PC1", "PC2"]
 
 output = data_state_space[species]
