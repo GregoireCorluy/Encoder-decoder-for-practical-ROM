@@ -60,8 +60,8 @@ for idxConfig, config in enumerate(experiment_configs):
     species_tag = config["species_tag"]
     my_seed = config["seed"]
 
-    training_nbr = f"{short_id}__{optimizer_name}_{int(lr*10000)}_{species_tag}_s{my_seed}"
-    filename = f"{general_dataset_type}-AE-opt_{optimizer_name}-epo_{epochs}-lr_{lr}-date_{date}_Tr{training_nbr}"
+    training_nbr = f"{short_id}_{optimizer_name}_{int(lr*10000)}_{species_tag}_s{my_seed}"
+    filename = f"Tr{training_nbr}-AE-date_{date}_{general_dataset_type}-{dataset_type}"
 
     path_data = "data-files/"
     filename_metadata = filename + "_metadata.pkl"
