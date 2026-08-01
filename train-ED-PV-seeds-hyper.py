@@ -34,12 +34,14 @@ device = torch.device("cuda:2" if torch.cuda.is_available() else "cpu")
 logging.info(f"My device: {device}")
 current_time = datetime.now()
 
+id_name = "1d2PV0to1"
+
 # Optimizer
 loss_name = "mse" #"MSE"
 lambda_reg = 1
 learning_rate_decay = "Cosine"
 cosine_alpha = 0.01
-max_epo = 3
+max_epo = 100000
 cosine_decay_steps = 100000
 optimizer_alpha = 0.9
 optimizer_momentum = 0.3
@@ -112,7 +114,7 @@ for lr_i, opt_i, (species_tag, species_i), seed_i in product(
     }
     experiment_configs.append(config)
 
-print(f"Total number of runs: {len(experiment_configs)}")
+logging.info(f"Total number of runs: {len(experiment_configs)}")
 
 MSE_vals = np.zeros(len(experiment_configs))
 MSE_kr_vals = []
@@ -126,10 +128,10 @@ for idxConfig, config in enumerate(experiment_configs):
     species_tag = config["species_tag"]
     my_seed = config["seed"]
 
-    training_nbr = f"1Testd2PV0to1_{optimizer_name}_{int(lr*10000)}_{species_tag}"
+    training_nbr = f"{id_name}_{optimizer_name}_{int(lr*10000)}_{species_tag}"
     training_id = f"Tr{training_nbr}_s{my_seed}"
     list_ids.append(training_id)
-    print(training_id)
+    logging.info(f"Start training of model with id: {training_id}")
 
     ###############################
     #Initialization of the training
