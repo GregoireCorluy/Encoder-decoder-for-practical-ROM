@@ -34,15 +34,15 @@ device = torch.device("cuda:2" if torch.cuda.is_available() else "cpu")
 logging.info(f"My device: {device}")
 current_time = datetime.now()
 
-id_name = "1f2PVpareto300k"
+id_name = "1f2PVpareto300kBis"
 
 # Optimizer
 loss_name = "mse" #"MSE"
 lambda_reg = 1
 learning_rate_decay = "Cosine"
 cosine_alpha = 0.01
-max_epo = 100000
-cosine_decay_steps = 300000
+max_epo = 300000
+cosine_decay_steps = 100000
 optimizer_alpha = 0.9
 optimizer_momentum = 0.3
 epo_show_loss = 1000000
