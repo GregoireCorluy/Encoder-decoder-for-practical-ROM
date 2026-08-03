@@ -34,7 +34,7 @@ device = torch.device("cuda:2" if torch.cuda.is_available() else "cpu")
 logging.info(f"My device: {device}")
 current_time = datetime.now()
 
-id_name = "1e2PVparetoNoSL"
+id_name = "1f2PVpareto300k"
 
 # Optimizer
 loss_name = "mse" #"MSE"
@@ -42,7 +42,7 @@ lambda_reg = 1
 learning_rate_decay = "Cosine"
 cosine_alpha = 0.01
 max_epo = 100000
-cosine_decay_steps = 100000
+cosine_decay_steps = 300000
 optimizer_alpha = 0.9
 optimizer_momentum = 0.3
 epo_show_loss = 1000000
@@ -66,7 +66,7 @@ temperature_output = True
 output_scaling = "-1to1"
 
 # Encoder-decoder architecture
-species_scaling_layer = False
+species_scaling_layer = True
 init_species_scaling_range = (1.0, 2.0)
 init_name_enc = "Normal"
 init_name_dec = "Normal"
