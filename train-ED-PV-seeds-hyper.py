@@ -34,7 +34,7 @@ device = torch.device("cuda:2" if torch.cuda.is_available() else "cpu")
 logging.info(f"My device: {device}")
 current_time = datetime.now()
 
-id_name = "1c2PVpareto"
+id_name = "1e2PVparetoNoSL"
 
 # Optimizer
 loss_name = "mse" #"MSE"
@@ -66,7 +66,7 @@ temperature_output = True
 output_scaling = "-1to1"
 
 # Encoder-decoder architecture
-species_scaling_layer = True
+species_scaling_layer = False
 init_species_scaling_range = (1.0, 2.0)
 init_name_enc = "Normal"
 init_name_dec = "Normal"
