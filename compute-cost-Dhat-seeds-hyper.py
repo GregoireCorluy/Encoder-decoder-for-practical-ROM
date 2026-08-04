@@ -21,8 +21,8 @@ nbr_seeds = 6
 general_dataset_type = "Malik"
 dataset_type = "CFLF-2022"
 
-short_id = "1c2PVpareto"
-date = "01Aug2026-hour_17h07"
+short_id = "1e2PVparetoNoSL"
+date = "03Aug2026-hour_16h00"
 epochs = 100000
 
 learning_rates = [0.025]
