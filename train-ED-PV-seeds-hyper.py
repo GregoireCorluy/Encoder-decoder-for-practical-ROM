@@ -34,7 +34,7 @@ device = torch.device("cuda:2" if torch.cuda.is_available() else "cpu")
 logging.info(f"My device: {device}")
 current_time = datetime.now()
 
-id_name = "1f2PVpareto300kBis"
+id_name = "1gPVUpdatedData300k"
 
 # Optimizer
 loss_name = "mse" #"MSE"
@@ -53,15 +53,15 @@ PV_rescaling_init = True
 PV_rescaling_batch = True
 scale_PV = 0.001
 always_rescale_PV = False
-PV_dim = 2
-extra_manifold_parameters = [] #["mf"]
+PV_dim = 1
+extra_manifold_parameters = ["mf"] #["mf"]
 range_extra_manifold_parameters = 1 #from -x/2 to x/2
 
 # Input/output data
 perc_val = 0.1 #0.2 #percentage of validation data
 list_species_input = ['H2', 'H', 'O', 'O2', 'OH', 'H2O', 'HO2', 'H2O2', 'C', 'CH', 'CH2', 'CH2S', 'CH3', 'CH4', 'CO', 'CO2', 'HCO', 'CH2O', 'CH2OH', 'CH3O', 'CH3OH', 'C2H', 'C2H2', 'C2H3', 'C2H4', 'C2H5', 'C2H6', 'HCCO', 'CH2CO', 'HCCOH', 'C3H7', 'C3H8', 'CH2CHO', 'CH3CHO', 'N2']
 list_species_output_evaluation = ["CH4", "CO", "O2", "CO2", "H2O", "N2"]
-input_scaling_name = "pareto" #"None"
+input_scaling_name = "None" #"None"
 temperature_output = True
 output_scaling = "-1to1"
 
