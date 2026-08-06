@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 
 device = torch.device("cuda:2" if torch.cuda.is_available() else "cpu")
 
-dataset_type = "autoignition"
+dataset_type = "CFLF-2022"
 
 penalty_function = 'log-sigma-over-peak'
 start_bw = -6
@@ -29,9 +29,9 @@ def compute_avg(costs):
     return 1/n*np.sqrt(sum)
 
 path = "data-files/"
-name_T = "Malik-T-CFLF-2022.csv"
-name_state_space = "Malik-state-space-CFLF-2022.csv"
-name_state_space_source = "Malik-state-space_source-CFLF-2022.csv"
+name_T = f"Malik-T-{dataset_type}.csv"
+name_state_space = f"Malik-state-space-{dataset_type}.csv"
+name_state_space_source = f"Malik-state-space_source-{dataset_type}.csv"
 
 data_T = pd.read_csv(path + name_T)
 data_state_space = pd.read_csv(path + name_state_space)
