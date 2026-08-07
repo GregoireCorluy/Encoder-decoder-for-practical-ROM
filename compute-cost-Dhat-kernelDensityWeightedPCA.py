@@ -55,7 +55,8 @@ X_hat = weights*X_scaled
 
 U, S, Vt = np.linalg.svd(X_hat, full_matrices=False)
 
-PCA_components = Vt[:2, :]
+components = Vt.T
+PCA_components = components[:, :2]
 
 PCA_param = X_scaled @ PCA_components
 
